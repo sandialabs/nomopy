@@ -2,7 +2,8 @@
 
 ![Noise](./doc/logos/nomopy_noise_detective.png)
 
-**Nomopy** is statistical software for modeling and analyzing noise signals created by discrete level fluctuators.  For details see our [paper](http://www.noisepaper.pub), or look through the [code documentation](http://nomopy.readthedocs.io).
+**Nomopy** is statistical software for modeling and analyzing noise signals created by discrete level fluctuators.  For details see our [paper](https://arxiv.org/pdf/2311.00084
+), or look through the [code documentation](http://nomopy.readthedocs.io).
 
 ## Features
 
