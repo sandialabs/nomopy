@@ -1,0 +1,5 @@
+[tool.pytest.ini_options]
+markers = [
+    "slow: marks tests as slow (deselect with '-m \"not slow\"')",
+    "refactor_nomopy010: marks test that matches against nomopy version 0.1.0",
+]
