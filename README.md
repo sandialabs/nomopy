@@ -35,11 +35,22 @@ Consider using our `environment.yml` file to install the recommended dependencie
 $ conda env create -f environment.yml
 ```
 
-Then install `nomopy`:
+Then install `nomopy` (we're working on the pip install):
+
+Git clone the repository and either:
+
+```python
+>>> import sys
+>>> sys.path.append('/path/to/nomopy/')
+```
+
+or try
 
 ```shell
-$ pip install nomopy
+$ cd nomopy
+$ pip install -e .
 ```
+
 
 Testing and coverage:
 
