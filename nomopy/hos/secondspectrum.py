@@ -1,5 +1,5 @@
 import numpy as np
-from numpy.fft import rfft, irfft
+from numpy.fft import rfft
 from numpy.fft import rfftfreq
 import scipy.stats as scs
 

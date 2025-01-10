@@ -1,5 +1,4 @@
 import numpy as np
-import pytest
 
 from nomopy.fhmm.convergence_monitor import ConvergenceMonitor
 
