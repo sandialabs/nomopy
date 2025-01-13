@@ -1117,7 +1117,7 @@ class Hessian():
 
 
     def hessian_element(self, i, j):
-        """ Calculate particular (i, j) hessian element, where the index
+        r""" Calculate particular (i, j) hessian element, where the index
         corresponds to the unravelled independent elements of W, A, C,
         and pi, in that particular order. For example (0, 0) will be
         the first independent element of canonically transformed W upon
@@ -1238,7 +1238,7 @@ class Hessian():
 
 
     def hessian(self):
-        """ Evaluate the Hessian of the log likelihood. Upper triangle
+        r""" Evaluate the Hessian of the log likelihood. Upper triangle
         is evaluated and then the rest are filled in using the transpose.
 
         Returns
