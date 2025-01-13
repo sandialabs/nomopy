@@ -833,13 +833,13 @@ class FHMM(BaseEstimator):
     @staticmethod
     @lru_cache(maxsize=None)
     def get_k_contrib(d, k, string_realizations):
-        realizations = np.frombuffer(string_realizations, dtype=np.int).reshape(d, -1)
+        realizations = np.frombuffer(string_realizations, dtype=int).reshape(d, -1)
         k_contrib = defaultdict(set)  # mapping (t, d, k) -> i indices of realization containing k
         for idx_d in range(d):
             for i in range(realizations.shape[1]):
                 k_contrib[(idx_d, realizations[idx_d, i])].add(i)
 
-        k_contrib_array = np.zeros(shape=(d, k, k**(d-1)), dtype=np.int)
+        k_contrib_array = np.zeros(shape=(d, k, k**(d-1)), dtype=int)
 
         for (i, j), el_set in k_contrib.items():
             k_contrib_array[i, j, :] = np.array(list(el_set))
@@ -1026,7 +1026,7 @@ class FHMM(BaseEstimator):
         return ll
 
     def log_likelihood(self):
-        """ Log likelihood of the entire data given the model parameters.
+        r""" Log likelihood of the entire data given the model parameters.
 
         Returns
         -------
@@ -1200,7 +1200,7 @@ class FHMM(BaseEstimator):
 
 
     def hessian_for_sample(self, sample_idx):
-        """ Calculates the Hessian of the log likelihood for a particular sample.
+        r""" Calculates the Hessian of the log likelihood for a particular sample.
         Expects canonically transformed W.  Canonical W is enforced during model
         training.
 
@@ -1241,7 +1241,7 @@ class FHMM(BaseEstimator):
         return self.hessian_samples[sample_idx]
 
     def hessian(self):
-        """ Calculates the Hessian of the log likelihood averaging over all samples.
+        r""" Calculates the Hessian of the log likelihood averaging over all samples.
         Expects canonically transformed W.  Canonical W is enforced during model
         training.
 
@@ -1381,7 +1381,7 @@ class FHMM(BaseEstimator):
         self.pi_fixed_ = None
 
     def final_state_distribution(self):
-        """ Estimates the final hidden state distribution given the
+        r""" Estimates the final hidden state distribution given the
         time series.  Uses the Viterbi algorithm to estimate the
         final time sample's hidden state.  Then uses the transition
         matrices to calculate the probability distribution for the
@@ -1667,7 +1667,7 @@ class FHMM(BaseEstimator):
         self._update_expectations()
 
     def viterbi(self, sample_idx):
-        """ The Viterbi algorithm for FHMMs.
+        r""" The Viterbi algorithm for FHMMs.
 
         Parameters
         ----------
@@ -1693,7 +1693,7 @@ class FHMM(BaseEstimator):
 
         # Initialize delta (just like alpha)
         delta = np.zeros(shape=(self.T, self.k**self.d))
-        psi = np.zeros(shape=(self.T, self.k**self.d), dtype=np.int)
+        psi = np.zeros(shape=(self.T, self.k**self.d), dtype=int)
         for i in range(realizations.shape[1]):
             pi = 1
             for d in range(self.d):
@@ -1716,7 +1716,7 @@ class FHMM(BaseEstimator):
         p_star = np.max(delta[self.T-1])
 
         # Backtrack through the most likely states
-        q_star = np.zeros(shape=self.T, dtype=np.int)
+        q_star = np.zeros(shape=self.T, dtype=int)
         q_star[self.T-1] = int(np.argmax(delta[self.T-1]))
 
         for t in reversed(range(self.T-1)):
