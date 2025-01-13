@@ -829,13 +829,13 @@ class FHMM(BaseEstimator):
     @staticmethod
     @lru_cache(maxsize=None)
     def get_k_contrib(d, k, string_realizations):
-        realizations = np.frombuffer(string_realizations, dtype=np.int).reshape(d, -1)
+        realizations = np.frombuffer(string_realizations, dtype=np.int64).reshape(d, -1)
         k_contrib = defaultdict(set)  # mapping (t, d, k) -> i indices of realization containing k
         for idx_d in range(d):
             for i in range(realizations.shape[1]):
                 k_contrib[(idx_d, realizations[idx_d, i])].add(i)
 
-        k_contrib_array = np.zeros(shape=(d, k, k**(d-1)), dtype=np.int)
+        k_contrib_array = np.zeros(shape=(d, k, k**(d-1)), dtype=np.int64)
 
         for (i, j), el_set in k_contrib.items():
             k_contrib_array[i, j, :] = np.array(list(el_set))
@@ -1689,7 +1689,7 @@ class FHMM(BaseEstimator):
 
         # Initialize delta (just like alpha)
         delta = np.zeros(shape=(self.T, self.k**self.d))
-        psi = np.zeros(shape=(self.T, self.k**self.d), dtype=np.int)
+        psi = np.zeros(shape=(self.T, self.k**self.d), dtype=np.int64)
         for i in range(realizations.shape[1]):
             pi = 1
             for d in range(self.d):
@@ -1712,7 +1712,7 @@ class FHMM(BaseEstimator):
         p_star = np.max(delta[self.T-1])
 
         # Backtrack through the most likely states
-        q_star = np.zeros(shape=self.T, dtype=np.int)
+        q_star = np.zeros(shape=self.T, dtype=np.int64)
         q_star[self.T-1] = int(np.argmax(delta[self.T-1]))
 
         for t in reversed(range(self.T-1)):
