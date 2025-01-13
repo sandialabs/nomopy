@@ -585,7 +585,15 @@ def test_load_best_models_from_directories(tmp_path):
     save_dirs = [os.path.join(tmp_path, d) for d in os.listdir(tmp_path)]
     reloaded_fhmms = FHMM.load_best_models_from_directories(save_dirs)
 
-    for fhmm, reloaded_fhmm in zip([fhmm1, fhmm2], reloaded_fhmms):
+    if reloaded_fhmms[0].d == d1:
+        reloaded_fhmm1 = reloaded_fhmms[0]
+        reloaded_fhmm2 = reloaded_fhmms[1]
+    else:
+        reloaded_fhmm2 = reloaded_fhmms[0]
+        reloaded_fhmm1 = reloaded_fhmms[1]
+
+    for fhmm, reloaded_fhmm in zip([fhmm1, fhmm2],
+                                   [reloaded_fhmm1, reloaded_fhmm2]):
         np.testing.assert_allclose(fhmm.W, reloaded_fhmm.W)
         np.testing.assert_allclose(fhmm.A, reloaded_fhmm.A)
         np.testing.assert_allclose(fhmm.C, reloaded_fhmm.C)
