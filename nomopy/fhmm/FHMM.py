@@ -4,19 +4,15 @@ import pickle
 import warnings
 from copy import deepcopy
 from itertools import product
-from itertools import combinations_with_replacement
 from collections import defaultdict
 from functools import lru_cache
-from functools import partial
 
 import numpy as np
 from numpy.linalg import LinAlgError
-import scipy.stats as scs
 from scipy.special import softmax
 import matplotlib.pyplot as plt
 from sklearn.base import BaseEstimator
 from joblib import Parallel, delayed
-from autograd import jacobian
 
 from .convergence_monitor import ConvergenceMonitor
 from .exact_hessian import Hessian
