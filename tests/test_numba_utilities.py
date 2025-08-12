@@ -3,9 +3,6 @@ import pickle
 
 import numpy as np
 import pytest
-import hypothesis.strategies as st
-from hypothesis import given, settings
-from hypothesis.extra.numpy import arrays
 import pickle
 
 
