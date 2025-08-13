@@ -8,7 +8,7 @@ version = "0.1.0"
 authors = [
     {name = "Toby Jacobson", email = "ntjacob@sandia.gov"},
     {name = "Dylan Albrecht", email = "dalbrec@sandia.gov"},
-    {name = "Rohith Vudatha", email = "rvudath@sandia.gov"}
+    {name = "Rohith Vudatha", email = "rvudath@sandia.gov"},
 ]
 description = "Noise Modeling in Python"
 readme = "README.md"
@@ -18,7 +18,6 @@ classifiers=[
     "Development Status :: 4 - Beta",
     'Intended Audience :: Science/Research',
     'Intended Audience :: Developers',
-    'License :: OSI Approved',
     'Programming Language :: Python',
     'Programming Language :: Python :: 3.7',
     'Programming Language :: Python :: 3.8',
