@@ -4,11 +4,9 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "nomopy"
-version = "0.1.0"
+version = "0.1.1"
 authors = [
-    {name = "Toby Jacobson", email = "ntjacob@sandia.gov"},
-    {name = "Dylan Albrecht", email = "dalbrec@sandia.gov"},
-    {name = "Rohith Vudatha", email = "rvudath@sandia.gov"},
+    {name = "Dylan Albrecht, Toby Jacobson, Rohith Vudatha"},
 ]
 description = "Noise Modeling in Python"
 readme = "README.md"
